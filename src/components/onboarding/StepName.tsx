@@ -1,10 +1,17 @@
+import { Field } from "@chakra-ui/react/field"
+import { Input } from "@chakra-ui/react/input"
+import { InputGroup } from "@chakra-ui/react/input-group"
+import { LuUser } from "react-icons/lu"
+import { Button, Flex } from "@chakra-ui/react"
+import { RiArrowRightLine } from "react-icons/ri"
+
 type Props = {
   value: string
   onChange: (name: string) => void
   onNext: () => void
 }
 
-export default function StepName({ value, onNext }: Props) {
+export default function StepName({ value,onChange, onNext }: Props) {
   const isValid = value.trim().length >= 2
 
   function handleSubmit(e: React.FormEvent) {
@@ -13,12 +20,16 @@ export default function StepName({ value, onNext }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <header className="flex flex-col gap-1">
-        <h1 className="text-2xl font-bold">Vamos começar</h1>
-        <p className="text-sm text-muted-foreground">Como devemos te chamar?</p>
-      </header>
-
-    </form>
+    <Flex flexDir="column" align="center" gap={5} textAlign="center" pt={10} as="section">
+     
+      <Field.Root>
+        <Field.Label>Como devemos te chamar?</Field.Label>
+        <InputGroup startElement={<LuUser />}>
+          <Input placeholder="Seu nome" colorPalette='brand' onChange={e => onChange(e.target.value)} />
+        </InputGroup>
+      </Field.Root>
+      
+      <Button colorPalette="brand" rounded="2xl" disabled={!isValid} onClick={handleSubmit}>Continuar <RiArrowRightLine /></Button>
+    </Flex>
   )
 }

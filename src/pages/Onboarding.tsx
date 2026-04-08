@@ -4,6 +4,8 @@ import { Text } from "@chakra-ui/react"
 import { useState } from "react";
 import { Badge } from "@chakra-ui/react"
 import { Progress } from "@chakra-ui/react"
+import StepName from "../components/onboarding/StepName";
+import StepHabit from "../components/onboarding/StepHabit";
 
 
 
@@ -11,14 +13,21 @@ export default function Onboarding() {
   const [brand500] = useToken('colors', ['brand.500'])
   const [name, setName] = useState('')
   const [step, setStep] = useState<1 | 2>(1)
+  const [selectedHabits, setSelectedHabits] = useState<string[]>([])
   const TOTAL_STEPS = 2
 
   const progress = (step / TOTAL_STEPS) * 100
 
+  function toggleHabit(id: string) {
+    setSelectedHabits(prev =>
+      prev.includes(id) ? prev.filter(h => h !== id) : [...prev, id]
+    )
+  }
+
   return (
     <Flex minH="100vh" flexDir="column" align="center" px={6} pt={10} as="main">
-      <Flex as="section" flexDir="column" w="full" maxW="sm" gap={6}>
-        
+      <Flex flexDir="column" w="full" maxW="sm" gap={6} as="section">
+
         <Flex flexDir="column" gap={1} align="center">
           <Badge backgroundColor="brand.100" color="brand.500">
             PASSO {step} DE {TOTAL_STEPS}
@@ -30,18 +39,30 @@ export default function Onboarding() {
           </Progress.Root>
         </Flex>
 
-        <Flex flexDir="column" align="center" gap={2} textAlign="center" pt={10}>
+        <Flex flexDir="column" align="center" gap={2} textAlign="center" pt={10} as="section">
           <Box w={20} h={20} rounded="3xl" shadow="lg" display="flex" alignItems="center" justifyContent="center" bg="white" mb={4}>
             <MdOutlineRocketLaunch size={48} color={brand500} />
           </Box>
           <Heading size="2xl" fontWeight="bold">
             Vamos começar sua jornada saudável
           </Heading>
-          <Text fontSize="sm" color="gray.500">
+          <Text fontSize="sm" color="secondary.500">
             Personalize sua experiência para criar hábitos que realmente duram.
           </Text>
         </Flex>
-
+        {step === 1 && (
+          <StepName
+            value={name}
+            onChange={setName}
+            onNext={() => setStep(2)}
+          />
+        )}
+        {step === 2 && (
+            <StepHabit
+              selected={selectedHabits}
+              onToggle={toggleHabit}
+            />
+        )}
       </Flex>
     </Flex>
   )
