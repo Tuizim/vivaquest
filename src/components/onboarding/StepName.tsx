@@ -1,14 +1,10 @@
-import { Label } from "../ui/label"
-import { Input } from "../ui/input"
-import { Button } from "../ui/button"
-
 type Props = {
   value: string
   onChange: (name: string) => void
   onNext: () => void
 }
 
-export default function StepName({ value, onChange, onNext }: Props) {
+export default function StepName({ value, onNext }: Props) {
   const isValid = value.trim().length >= 2
 
   function handleSubmit(e: React.FormEvent) {
@@ -23,19 +19,6 @@ export default function StepName({ value, onChange, onNext }: Props) {
         <p className="text-sm text-muted-foreground">Como devemos te chamar?</p>
       </header>
 
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="name">Seu nome</Label>
-        <Input
-          id="name"
-          placeholder="Digite seu nome"
-          value={value}
-          onChange={e => onChange(e.target.value)}
-        />
-      </div>
-
-      <Button type="submit" disabled={!isValid} className="w-full">
-        Próximo
-      </Button>
     </form>
   )
 }

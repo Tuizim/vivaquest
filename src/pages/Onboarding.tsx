@@ -1,34 +1,48 @@
-import { useState } from "react";
 import { MdOutlineRocketLaunch } from "react-icons/md";
-import StepName from "../components/onboarding/StepName";
+import { Box, Flex, Heading, useToken } from "@chakra-ui/react"
+import { Text } from "@chakra-ui/react"
+import { useState } from "react";
+import { Badge } from "@chakra-ui/react"
+import { Progress } from "@chakra-ui/react"
+
+
 
 export default function Onboarding() {
-  const [step, setStep] = useState<1 | 2>(1)
+  const [brand500] = useToken('colors', ['brand.500'])
   const [name, setName] = useState('')
-  const [selectedHabits, setSelectedHabits] = useState<string[]>([])
+  const [step, setStep] = useState<1 | 2>(1)
+  const TOTAL_STEPS = 2
+
+  const progress = (step / TOTAL_STEPS) * 100
 
   return (
-    <main className="min-h-screen flex flex-col items-center px-6 mt-10">
-      <section className="w-full max-w-sm flex flex-col gap-6">
-        <header className="flex flex-col items-center gap-2">
-          <div className="w-20 h-20 rounded-4xl shadow-md flex items-center justify-center bg-card  mb-4">
-            <MdOutlineRocketLaunch  className="w-14 h-14 text-brand" />
-          </div>
-          <h1 className="text-3xl font-bold text-center mb-3">Vamos começar sua jornada saudável</h1>
-          <p className="text-sm text-muted-foreground text-center">Personalize sua experiência para criar
-      hábitos que realmente duram.</p>
-        </header>
-      </section>
+    <Flex minH="100vh" flexDir="column" align="center" px={6} pt={10} as="main">
+      <Flex as="section" flexDir="column" w="full" maxW="sm" gap={6}>
+        
+        <Flex flexDir="column" gap={1} align="center">
+          <Badge backgroundColor="brand.100" color="brand.500">
+            PASSO {step} DE {TOTAL_STEPS}
+          </Badge>
+          <Progress.Root value={progress} colorPalette="brand" variant="subtle" width="full" size="xs">
+            <Progress.Track>
+              <Progress.Range />
+            </Progress.Track>
+          </Progress.Root>
+        </Flex>
 
-      <section>
-        {step === 1 && (
-          <StepName
-            value={name}
-            onChange={setName}
-            onNext={() => setStep(2)}
-          />
-        )}
-      </section>
-    </main>
+        <Flex flexDir="column" align="center" gap={2} textAlign="center" pt={10}>
+          <Box w={20} h={20} rounded="3xl" shadow="lg" display="flex" alignItems="center" justifyContent="center" bg="white" mb={4}>
+            <MdOutlineRocketLaunch size={48} color={brand500} />
+          </Box>
+          <Heading size="2xl" fontWeight="bold">
+            Vamos começar sua jornada saudável
+          </Heading>
+          <Text fontSize="sm" color="gray.500">
+            Personalize sua experiência para criar hábitos que realmente duram.
+          </Text>
+        </Flex>
+
+      </Flex>
+    </Flex>
   )
 }
