@@ -3,15 +3,18 @@ import './App.css'
 import Onboarding from './pages/Onboarding'
 import Dashboard from './pages/Dashboard'
 import { Flex } from '@chakra-ui/react'
+import ProtectedRoute from './security/ProtectedRoute'
 
 function App() {
   return (
     <Flex minH="100vh" flexDir="column" align="center" px={6} pt={10} as="main">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/onboarding"/>}/>
-          <Route path="/onboarding" element={<Onboarding />}/>
-          <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Flex>
