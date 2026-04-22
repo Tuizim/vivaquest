@@ -1,10 +1,11 @@
 import { Badge, Button, Flex, Heading } from "@chakra-ui/react"
 import SelectHabit from "../habits/SelectHabit"
 import { HABITS_LIST } from "../../data/habits"
+import type { Habit } from "../../types"
 
 type Props = {
-  selected: string[]
-  onToggle: (id: string) => void
+  selected: Habit[]
+  onToggle: (habit: Habit) => void
 }
 
 export default function StepHabit({ selected, onToggle }: Props) {
@@ -20,12 +21,11 @@ export default function StepHabit({ selected, onToggle }: Props) {
           <SelectHabit
             key={habit.id}
             habit={habit}
-            checked={selected.includes(habit.id)}
-            onToggle={() => onToggle(habit.id)}
+            checked={selected.includes(habit)}
+            onToggle={() => onToggle(habit)}
           />
         ))}
       </Flex>
-      <Button colorPalette="brand" rounded="2xl">Finalizar</Button>
     </Flex>
   )
 }
