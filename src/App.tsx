@@ -9,9 +9,9 @@ function App() {
     <Flex minH="100vh" flexDir="column" align="center" px={6} pt={10} as="main">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element=<Navigate to="/onboarding"/>/>
-          <Route path="/onboarding" element=<Onboarding/>/>
-          <Route path="/dashboard" element=<Dashboard/>/>
+          <Route path="/" element={<Navigate to="/onboarding"/>}/>
+          <Route path="/onboarding" element={<Onboarding />}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </BrowserRouter>
     </Flex>
