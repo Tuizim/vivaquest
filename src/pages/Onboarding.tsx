@@ -28,30 +28,28 @@ export default function Onboarding() {
   }
 
   return (
-    <Flex minH="100vh" flexDir="column" align="center" px={6} pt={10} as="main">
-      <Flex flexDir="column" w="full" maxW="sm" gap={6} as="section">
-        <OnboardingHeader step={step} totalSteps={TOTAL_STEPS} />
+    <Flex flexDir="column" w="full" maxW="sm" gap={6} as="section">
+      <OnboardingHeader step={step} totalSteps={TOTAL_STEPS} />
 
-        {step === 1 && (
-          <StepName
-            value={name}
-            onChange={setName}
-            onNext={nextStep}
+      {step === 1 && (
+        <StepName
+          value={name}
+          onChange={setName}
+          onNext={nextStep}
+        />
+      )}
+
+      {step === 2 && (
+        <>
+          <StepHabit
+            selected={selectedHabits}
+            onToggle={toggleHabit}
           />
-        )}
-
-        {step === 2 && (
-          <>
-            <StepHabit
-              selected={selectedHabits}
-              onToggle={toggleHabit}
-            />
-            <Button colorPalette="brand" rounded="2xl" onClick={handleFinish}>
-              Finalizar
-            </Button>
-          </>
-        )}
-      </Flex>
+          <Button colorPalette="brand" rounded="2xl" onClick={handleFinish}>
+            Finalizar
+          </Button>
+        </>
+      )}
     </Flex>
   );
 }
