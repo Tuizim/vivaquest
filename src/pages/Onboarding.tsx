@@ -5,12 +5,14 @@ import { OnboardingHeader } from "../components/onboarding/OnboardingHeader";
 import { useAppStore } from "../store/useAppStore";
 import { useOnboardingHook } from "../hooks/useOnboardingHook";
 import type { UserProfile } from "../types";
+import { useNavigate } from "react-router-dom";
 
 const TOTAL_STEPS = 2;
 
 export default function Onboarding() {
   const setProfile = useAppStore((state) => state.setProfile);
   const setHabits = useAppStore((state) => state.setHabits);
+  const navigate = useNavigate();
 
   const {
     step,
@@ -25,6 +27,7 @@ export default function Onboarding() {
     const profile:UserProfile = { name:name, createdAt: new Date()}
     setProfile(profile);
     setHabits(selectedHabits)
+    navigate("/")
   }
 
   return (
