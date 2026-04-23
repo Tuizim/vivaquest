@@ -23,7 +23,7 @@ export function DashboardStatistics() {
       </Text>
 
       <Group grow mt="2">
-        <StatisticData title="Sequencia" value={currentStreak} variant="streak" />
+        <StatisticData title="Sequência" value={currentStreak} variant="streak" />
         <StatisticData title="Pontos" value={points} />
       </Group>
 
