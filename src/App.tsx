@@ -7,17 +7,18 @@ import ProtectedRoute from './security/ProtectedRoute'
 
 function App() {
   return (
-    <Flex minH="100vh" flexDir="column" align="center" px={6} pt={10} as="main">
-      <BrowserRouter>
+    <BrowserRouter>
+      <Flex minH="100vh" flexDir="column" align="center" px={6} pt={10} as="main">
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/onboarding" element={<Onboarding />} />
+
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </Flex>
+      </Flex>
+    </BrowserRouter>
   )
 }
 
