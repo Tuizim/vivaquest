@@ -15,7 +15,7 @@ export const useAppStore = create<AppStore>()(
         points: 0,
         currentStreak: 0,
         bestStreak: 0,
-        lastProcessedDate: '',
+        lastProcessedDate: new Date,
       },
        setProfile: (profile) => set({ profile }),
        setHabits: (habits) => set({ habits }),
