@@ -7,4 +7,5 @@ export type Habit = {
   iconColor: string
   iconBg: string
   description: string
+  concluded: boolean
 }

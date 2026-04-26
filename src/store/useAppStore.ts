@@ -17,8 +17,16 @@ export const useAppStore = create<AppStore>()(
         bestStreak: 0,
         lastProcessedDate: new Date,
       },
-       setProfile: (profile) => set({ profile }),
-       setHabits: (habits) => set({ habits }),
+      setProfile: (profile) => set({ profile }),
+      setHabits: (habits) => set({ habits }),
+      toggleHabit: (habitId, status) =>
+        set((state) => ({
+          habits: state.habits.map((habit) =>
+            habit.id === habitId
+              ? { ...habit, concluded: status }
+              : habit
+          ),
+        })),
     }),
     {
       name: 'vivaquest_state',
