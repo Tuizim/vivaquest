@@ -6,7 +6,7 @@ export function DashboardHabits() {
   const{habits,toggleHabit} = useAppStore()
 
   return (
-    <Flex as='section'  w="full" maxW="sm" flexDir="column" gap="3">
+    <Flex as='section'  w="full" maxW="sm" flexDir="column" gap="3" p="3">
       <Heading as="h3" size="xl" mt={5}>Seus hábitos</Heading>
       {
         habits.map(habit => (
