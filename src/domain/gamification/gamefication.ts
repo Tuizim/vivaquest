@@ -12,5 +12,6 @@ export function applyPoints(gamification: Gamification,delta: number): Gamificat
   return {
     ...gamification,
     points: gamification.points + delta,
+    lastProcessedDate: delta > 0 ? new Date() : gamification.lastProcessedDate,
   }
 }
