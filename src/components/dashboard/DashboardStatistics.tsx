@@ -1,6 +1,6 @@
 import { Box, Flex, Group, Progress, Text } from "@chakra-ui/react";
 import { useAppStore } from "../../store/useAppStore";
-import { getLevel, getPointsForNextLevel, getProgressInLevel } from "../../domain/gamification/level";
+import { getLevel, getPointsForNextLevel, getProgressInLevel } from "../../utils/levelUtils";
 import { StatisticData } from "./StatisticData";
 
 export function DashboardStatistics() {

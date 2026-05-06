@@ -1,4 +1,4 @@
-import { HABITS_LIST } from "../../data/habits";
+import { HABITS_LIST } from "../data/habits";
 
 export function getHabitById(habitId: string) {
   return HABITS_LIST.find((habit) => habit.id === habitId) ?? null;

@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react"
 import type { Habit } from "../../types"
-import { getHabitIconById } from "../../domain/habits/habits"
 import { Checkbutton } from "../button/Checkbutton"
+import { getHabitIconById } from "../../utils/habitUtilss"
 
 type ConcludeHabitProp = {
   habit: Habit
