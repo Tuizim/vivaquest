@@ -107,9 +107,9 @@ vivaquest
 │  │  └─ habits.ts
 │  ├─ domain
 │  │  ├─ gamification
-│  │  │  └─ level.ts
+│  │  │  └─ gameficationService.ts
 │  │  └─ habits
-│  │     └─ habits.ts
+│  │     └─ habitsService.ts
 │  ├─ hooks
 │  │  └─ useOnboardingHook.ts
 │  ├─ index.css
@@ -120,18 +120,23 @@ vivaquest
 │  ├─ security
 │  │  └─ ProtectedRoute.tsx
 │  ├─ storage
+│  │  └─ persistConfig.ts
 │  ├─ store
 │  │  └─ useAppStore.ts
 │  ├─ styles
 │  ├─ theme.ts
-│  └─ types
-│     ├─ appActions.ts
-│     ├─ appState.ts
-│     ├─ gamefication.ts
-│     ├─ habit.ts
-│     ├─ history.ts
-│     ├─ index.ts
-│     └─ profile.ts
+│  ├─ types
+│  │  ├─ appActions.ts
+│  │  ├─ appState.ts
+│  │  ├─ appStore.ts
+│  │  ├─ gamefication.ts
+│  │  ├─ habit.ts
+│  │  ├─ history.ts
+│  │  ├─ index.ts
+│  │  └─ profile.ts
+│  └─ utils
+│     ├─ habitUtilss.ts
+│     └─ levelUtils.ts
 ├─ tsconfig.app.json
 ├─ tsconfig.json
 ├─ tsconfig.node.json

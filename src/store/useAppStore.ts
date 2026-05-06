@@ -1,9 +1,8 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { AppState } from '../types'
-import type { AppActions } from '../types/appActions'
-
-type AppStore = AppState & AppActions
+import { persistConfig } from '../storage/persistConfig'
+import type { AppStore } from '../types/appStore'
+import { processToggleHabit } from '../domain/habits/habits'
 
 export const useAppStore = create<AppStore>()(
   persist(
@@ -15,21 +14,17 @@ export const useAppStore = create<AppStore>()(
         points: 0,
         currentStreak: 0,
         bestStreak: 0,
-        lastProcessedDate: new Date,
+        lastProcessedDate: new Date(),
       },
+
       setProfile: (profile) => set({ profile }),
       setHabits: (habits) => set({ habits }),
-      toggleHabit: (habitId, status) =>
-        set((state) => ({
-          habits: state.habits.map((habit) =>
-            habit.id === habitId
-              ? { ...habit, concluded: status }
-              : habit
-          ),
-        })),
+
+      toggleHabit: (habitId, status) => {
+        const { habits, gamification } = get()
+        set(processToggleHabit(habits, gamification, habitId, status))
+      },
     }),
-    {
-      name: 'vivaquest_state',
-    }
+    persistConfig
   )
 )
