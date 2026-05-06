@@ -1,6 +1,4 @@
-import type { Gamification, Habit } from "../../types"
-import { applyPoints, calcPointsDelta } from "../gamification/gamefication"
-import type { ToggleHabitResult } from "../gamification/interfaces/toggleHabitResult"
+import type { Habit } from "../../types"
 
 export function toggleHabitById(habits: Habit[], habitId: string, status: boolean): Habit[] {
   return habits.map((h) =>
@@ -12,17 +10,6 @@ export function findHabitById(habits: Habit[], habitId: string): Habit | undefin
   return habits.find((h) => h.id === habitId)
 }
 
-export function processToggleHabit(
-  habits: Habit[],
-  gamification: Gamification,
-  habitId: string,
-  status: boolean
-): ToggleHabitResult {
-  const habit = findHabitById(habits, habitId)
-  const delta = calcPointsDelta(habit?.concluded ?? false, status)
-
-  return {
-    habits: toggleHabitById(habits, habitId, status),
-    gamification: applyPoints(gamification, delta),
-  }
+export function allHabitsCompleted(habits: Habit[]): boolean {
+  return habits.length > 0 && habits.every((h) => h.concluded)
 }

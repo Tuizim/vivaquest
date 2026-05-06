@@ -1,4 +1,4 @@
-import type { Gamification, Habit } from "../../../types"
+import type { Gamification, Habit } from "../types"
 
 export interface ToggleHabitResult {
   habits: Habit[]

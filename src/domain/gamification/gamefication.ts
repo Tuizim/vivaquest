@@ -1,4 +1,5 @@
 import type { Gamification } from "../../types"
+import { toLocalDate, wasYesterday } from "../../utils/dateUtils"
 
 export const POINTS_PER_HABIT = 10
 
@@ -12,6 +13,22 @@ export function applyPoints(gamification: Gamification,delta: number): Gamificat
   return {
     ...gamification,
     points: gamification.points + delta,
-    lastProcessedDate: delta > 0 ? new Date() : gamification.lastProcessedDate,
+  }
+}
+
+export function calcStreak(gamification: Gamification): Gamification {
+  const streakContinues = gamification.lastProcessedDate
+    ? wasYesterday(new Date(gamification.lastProcessedDate))
+    : false
+
+  const newStreak = streakContinues
+    ? gamification.currentStreak + 1
+    : gamification.currentStreak
+
+  return {
+    ...gamification,
+    currentStreak: newStreak,
+    bestStreak: Math.max(newStreak, gamification.bestStreak),
+    lastProcessedDate: toLocalDate(),
   }
 }
