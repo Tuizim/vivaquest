@@ -71,3 +71,70 @@ export default defineConfig([
   },
 ])
 ```
+
+```
+vivaquest
+├─ .npmrc
+├─ README.md
+├─ components.json
+├─ components.json.bak
+├─ eslint.config.js
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ public
+│  └─ favicon.svg
+├─ src
+│  ├─ App.css
+│  ├─ App.tsx
+│  ├─ assets
+│  ├─ components
+│  │  ├─ button
+│  │  │  └─ Checkbutton.tsx
+│  │  ├─ dashboard
+│  │  │  ├─ DashboardHabits.tsx
+│  │  │  ├─ DashboardHeader.tsx
+│  │  │  ├─ DashboardStatistics.tsx
+│  │  │  └─ StatisticData.tsx
+│  │  ├─ habits
+│  │  │  ├─ ConcludeHabit.tsx
+│  │  │  └─ SelectHabit.tsx
+│  │  └─ onboarding
+│  │     ├─ OnboardingHeader.tsx
+│  │     ├─ StepHabit.tsx
+│  │     └─ StepName.tsx
+│  ├─ data
+│  │  └─ habits.ts
+│  ├─ domain
+│  │  ├─ gamification
+│  │  │  └─ level.ts
+│  │  └─ habits
+│  │     └─ habits.ts
+│  ├─ hooks
+│  │  └─ useOnboardingHook.ts
+│  ├─ index.css
+│  ├─ main.tsx
+│  ├─ pages
+│  │  ├─ Dashboard.tsx
+│  │  └─ Onboarding.tsx
+│  ├─ security
+│  │  └─ ProtectedRoute.tsx
+│  ├─ storage
+│  ├─ store
+│  │  └─ useAppStore.ts
+│  ├─ styles
+│  ├─ theme.ts
+│  └─ types
+│     ├─ appActions.ts
+│     ├─ appState.ts
+│     ├─ gamefication.ts
+│     ├─ habit.ts
+│     ├─ history.ts
+│     ├─ index.ts
+│     └─ profile.ts
+├─ tsconfig.app.json
+├─ tsconfig.json
+├─ tsconfig.node.json
+└─ vite.config.ts
+
+```
