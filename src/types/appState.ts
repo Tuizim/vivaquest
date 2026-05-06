@@ -8,4 +8,5 @@ export type AppState = {
   habits: Habit[];
   history: DayRecord[];
   gamification: Gamification;
+  lastResetDate: Date | null;
 };

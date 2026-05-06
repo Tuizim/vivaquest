@@ -5,4 +5,5 @@ export type AppActions = {
   setProfile: (profile: UserProfile | null) => void
   setHabits: (habits: Habit[] | undefined) => void
   toggleHabit: (habitId: string, status: boolean) => void
+  resetDailyHabits: (date: Date) => void
 }
