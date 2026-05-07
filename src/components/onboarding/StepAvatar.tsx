@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
+import { StepWrapper } from "./StepWrapper"
 import { useRef } from "react"
 import { FiCamera } from "react-icons/fi"
 import { RiArrowRightLine } from "react-icons/ri"
@@ -24,7 +25,7 @@ export default function StepAvatar({ avatar, onChange, onNext, onSkip }: Props) 
   }
 
   return (
-    <Flex flexDir="column" align="center" gap={6} textAlign="center" pt={10} as="section">
+    <StepWrapper>
       <input
         ref={inputRef}
         type="file"
@@ -65,6 +66,6 @@ export default function StepAvatar({ avatar, onChange, onNext, onSkip }: Props) 
           Pular por agora
         </Button>
       </Flex>
-    </Flex>
+    </StepWrapper>
   )
 }

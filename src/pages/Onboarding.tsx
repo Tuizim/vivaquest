@@ -1,4 +1,4 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import StepName from "../components/onboarding/StepName";
 import StepHabit from "../components/onboarding/StepHabit";
 import StepAvatar from "../components/onboarding/StepAvatar";
@@ -67,15 +67,11 @@ export default function Onboarding() {
       )}
 
       {step === 3 && (
-        <>
-          <StepHabit
-            selected={selectedHabits}
-            onToggle={toggleHabit}
-          />
-          <Button colorPalette="brand" rounded="2xl" onClick={handleFinish}>
-            Finalizar
-          </Button>
-        </>
+        <StepHabit
+          selected={selectedHabits}
+          onToggle={toggleHabit}
+          onFinish={handleFinish}
+        />
       )}
     </Flex>
   );
