@@ -34,6 +34,10 @@ export default function Onboarding() {
     }
   }, [profile, navigate]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
+
   function handleFinish() {
     const profileData: UserProfile = {
       name,

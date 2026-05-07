@@ -1,4 +1,4 @@
-import { Flex, Text, Checkbox, Heading } from '@chakra-ui/react'
+import { Flex, Text, Checkbox } from '@chakra-ui/react'
 import type { Habit } from '../../types'
 
 type Props = {
@@ -14,7 +14,7 @@ export default function SelectHabit({ habit, checked, onToggle }: Props) {
       gap={3}
       p={4}
       rounded="xl"
-      border="1.5px solid"
+      borderWidth="1px"
       borderColor={checked ? 'brand.500' : 'gray.200'}
       bg={checked ? 'brand.100' : 'white'}
       cursor="pointer"
@@ -37,7 +37,7 @@ export default function SelectHabit({ habit, checked, onToggle }: Props) {
       </Flex>
 
       <Flex flexDir="column" flex={1}>
-        <Heading fontWeight="semibold">{habit.name}</Heading>
+        <Text fontWeight="semibold" fontSize="sm">{habit.name}</Text>
         <Text fontSize="sm" color="secondary.500">{habit.description}</Text>
       </Flex>
 
