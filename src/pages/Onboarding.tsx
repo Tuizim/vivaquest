@@ -1,6 +1,7 @@
 import { Button, Flex } from "@chakra-ui/react";
 import StepName from "../components/onboarding/StepName";
 import StepHabit from "../components/onboarding/StepHabit";
+import StepAvatar from "../components/onboarding/StepAvatar";
 import { OnboardingHeader } from "../components/onboarding/OnboardingHeader";
 import { useAppStore } from "../store/useAppStore";
 import { useOnboardingHook } from "../hooks/useOnboardingHook";
@@ -8,7 +9,7 @@ import type { UserProfile } from "../types";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const TOTAL_STEPS = 2;
+const TOTAL_STEPS = 3;
 
 export default function Onboarding() {
   const setProfile = useAppStore((state) => state.setProfile);
@@ -20,6 +21,8 @@ export default function Onboarding() {
     step,
     name,
     setName,
+    avatar,
+    setAvatar,
     selectedHabits,
     toggleHabit,
     nextStep,
@@ -34,6 +37,7 @@ export default function Onboarding() {
   function handleFinish() {
     const profileData: UserProfile = {
       name,
+      avatar,
       createdAt: new Date(),
     };
 
@@ -54,6 +58,15 @@ export default function Onboarding() {
       )}
 
       {step === 2 && (
+        <StepAvatar
+          avatar={avatar}
+          onChange={setAvatar}
+          onNext={nextStep}
+          onSkip={nextStep}
+        />
+      )}
+
+      {step === 3 && (
         <>
           <StepHabit
             selected={selectedHabits}
