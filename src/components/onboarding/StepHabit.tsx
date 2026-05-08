@@ -1,6 +1,5 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react"
-import SelectHabit from "../habits/SelectHabit"
-import { HABITS_LIST } from "../../data/habits"
+import { HabitSelectList } from "../habits/HabitSelectList"
 import type { Habit } from "../../types"
 
 type Props = {
@@ -13,6 +12,7 @@ const MIN_HABITS = 3
 
 export default function StepHabit({ selected, onToggle, onFinish }: Props) {
   const isReady = selected.length >= MIN_HABITS
+  const selectedIds = new Set(selected.map((h) => h.id))
 
   return (
     <Flex flexDir="column" gap={5}>
@@ -26,16 +26,13 @@ export default function StepHabit({ selected, onToggle, onFinish }: Props) {
           {selected.length} selecionado{selected.length !== 1 ? "s" : ""}
         </Text>
       </Flex>
-      <Flex flexDir="column" gap={3} w="full" overflowY="auto" maxH="45vh" px={1} py={0.5}>
-        {HABITS_LIST.map(habit => (
-          <SelectHabit
-            key={habit.id}
-            habit={habit}
-            checked={selected.includes(habit)}
-            onToggle={() => onToggle(habit)}
-          />
-        ))}
-      </Flex>
+
+      <HabitSelectList
+        selectedIds={selectedIds}
+        onToggle={onToggle}
+        maxH="45vh"
+      />
+
       <Button colorPalette="brand" rounded="2xl" onClick={onFinish} disabled={!isReady}>
         Finalizar
       </Button>
