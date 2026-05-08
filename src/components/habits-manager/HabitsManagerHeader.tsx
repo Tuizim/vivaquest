@@ -1,5 +1,9 @@
-import { PageHeader } from "../navigation/PageHeader";
+import { Flex, Heading } from "@chakra-ui/react";
 
 export function HabitsManagerHeader() {
-  return <PageHeader title="Gerenciar meus hábitos" />
+  return (
+    <Flex w="full" align="center" justify="space-between">
+      <Heading>Teste</Heading>
+    </Flex>
+  )
 }

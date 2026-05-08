@@ -10,11 +10,8 @@ export function PageHeader({ title, showReturnButton = true }: PageHeaderProps) 
   return (
     <Box
       as="nav"
-      display={{ base: "flex", lg: "none" }}
-      position="fixed"
-      top={0}
-      left={0}
-      right={0}
+      w="full"
+      display= "flex"
       h="64px"
       bg="white"
       borderBottom="1px solid"

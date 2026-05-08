@@ -8,6 +8,7 @@ import { useOnboardingHook } from "../hooks/useOnboardingHook";
 import type { UserProfile } from "../types";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { TabScreen } from "../components/layout/TabScreen";
 
 const TOTAL_STEPS = 3;
 
@@ -50,7 +51,7 @@ export default function Onboarding() {
   }
 
   return (
-    <Flex flexDir="column" w="full" maxW="sm" gap={6} as="section">
+    <TabScreen>
       <OnboardingHeader step={step} totalSteps={TOTAL_STEPS} />
 
       {step === 1 && (
@@ -77,6 +78,6 @@ export default function Onboarding() {
           onFinish={handleFinish}
         />
       )}
-    </Flex>
+    </TabScreen>
   );
 }

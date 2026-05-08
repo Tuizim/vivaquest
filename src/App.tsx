@@ -16,9 +16,6 @@ function App() {
         minH="100vh"
         flexDir="column"
         align="center"
-        px={6}
-        pt={10}
-        pb={{ base: "80px", lg: "0" }}
         ml={{ base: "0", lg: "240px" }}
         as="main"
       >

@@ -1,10 +1,10 @@
-import { Flex } from "@chakra-ui/react";
+import { PageLayout } from "../components/layout/PageLayout";
 import { HabitsManagerHeader } from "../components/habits-manager/HabitsManagerHeader";
 
 export default function HabitsManager() {
   return (
-    <Flex w="full" maxW="sm" flexDir="column" gap="5">
-     <HabitsManagerHeader></HabitsManagerHeader>
-    </Flex>
+    <PageLayout title="Gerenciar meus hábitos">
+      <HabitsManagerHeader />
+    </PageLayout>
   )
 }
