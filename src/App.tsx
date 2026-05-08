@@ -4,7 +4,6 @@ import Onboarding from './pages/Onboarding'
 import Dashboard from './pages/Dashboard'
 import { Flex } from '@chakra-ui/react'
 import ProtectedRoute from './security/ProtectedRoute'
-import { AppNav } from './components/navigation/AppNav'
 import { useDayReset } from './hooks/useDayReset'
 import HabitsManager from './pages/HabitsManager'
 
