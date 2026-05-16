@@ -6,6 +6,7 @@ import { Flex } from '@chakra-ui/react'
 import ProtectedRoute from './security/ProtectedRoute'
 import { useDayReset } from './hooks/useDayReset'
 import HabitsManager from './pages/HabitsManager'
+import { Profile } from './pages/Profile'
 
 function App() {
   useDayReset()
@@ -26,6 +27,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/habits-manager" element={<HabitsManager />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </Flex>
