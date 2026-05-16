@@ -1,4 +1,3 @@
-import { Flex } from "@chakra-ui/react";
 import StepName from "../components/onboarding/StepName";
 import StepHabit from "../components/onboarding/StepHabit";
 import StepAvatar from "../components/onboarding/StepAvatar";
