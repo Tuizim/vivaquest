@@ -1,9 +1,11 @@
 import { Box, Flex } from "@chakra-ui/react"
 import type { ReactNode } from "react"
 
+export type ResponsiveString = string | Partial<Record<string, string>>
+
 type Props = {
   children: ReactNode
-  maxH: string
+  maxH: ResponsiveString
   fadeColor?: string
   gap?: number
 }

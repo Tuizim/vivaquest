@@ -1,6 +1,7 @@
 import { Flex } from "@chakra-ui/react"
 import type { ReactNode } from "react"
 import { PageHeader } from "../navigation/PageHeader"
+import { contentMaxW, containerPx, containerPb, sectionGap } from "../../styles/tokens"
 
 type Props = {
   title: string
@@ -14,12 +15,12 @@ export function PageLayout({ title, showReturnButton, children }: Props) {
       <PageHeader title={title} showReturnButton={showReturnButton} />
       <Flex
         w="full"
-        maxW="sm"
+        maxW={contentMaxW}
         mx="auto"
         flexDir="column"
-        gap={5}
-        px={4}
-        pb={{ base: "80px", lg: "6" }}
+        gap={sectionGap}
+        px={containerPx}
+        pb={containerPb}
         mt={5}
       >
         {children}
