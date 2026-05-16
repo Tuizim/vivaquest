@@ -8,7 +8,7 @@ export function ReturnButton() {
   return (
     <IconButton
       aria-label="Voltar"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate('/dashboard')}
       rounded="full"
       variant="ghost"
     >
