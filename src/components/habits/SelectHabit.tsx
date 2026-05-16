@@ -12,8 +12,8 @@ export default function SelectHabit({ habit, checked, onToggle, disabled = false
   return (
     <Flex
       align="center"
-      gap={4}
-      px={4}
+      gap={{ base: 3, md: 4 }}
+      px={{ base: 3, md: 4 }}
       py={3}
       rounded="2xl"
       borderWidth="1.5px"
@@ -25,6 +25,7 @@ export default function SelectHabit({ habit, checked, onToggle, disabled = false
       onClick={disabled ? undefined : onToggle}
       _hover={disabled ? {} : { borderColor: checked ? 'brand.500' : 'secondary.300' }}
       w="full"
+      minH="56px"
     >
       <Flex
         w={11}
@@ -41,11 +42,11 @@ export default function SelectHabit({ habit, checked, onToggle, disabled = false
         <habit.icon />
       </Flex>
 
-      <Flex flexDir="column" flex={1} gap={0.5}>
-        <Text fontWeight="semibold" fontSize="sm" color="secondary.800">
+      <Flex flexDir="column" flex={1} gap={0.5} minW={0}>
+        <Text fontWeight="semibold" fontSize={{ base: "sm", md: "md" }} color="secondary.800">
           {habit.name}
         </Text>
-        <Text fontSize="xs" color="secondary.400">
+        <Text fontSize="xs" color="secondary.400" lineClamp={1}>
           {habit.description}
         </Text>
       </Flex>
@@ -55,6 +56,7 @@ export default function SelectHabit({ habit, checked, onToggle, disabled = false
         colorPalette="brand"
         pointerEvents="none"
         size="sm"
+        flexShrink={0}
       >
         <Switch.HiddenInput />
         <Switch.Control>

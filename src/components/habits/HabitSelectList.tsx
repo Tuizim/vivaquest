@@ -1,5 +1,5 @@
 import { HABITS_LIST } from "../../data/habits"
-import { FadeScroll } from "../layout/FadeScroll"
+import { FadeScroll, type ResponsiveString } from "../layout/FadeScroll"
 import SelectHabit from "./SelectHabit"
 import type { Habit } from "../../types"
 
@@ -7,7 +7,7 @@ type Props = {
   selectedIds: Set<string>
   onToggle: (habit: Habit) => void
   disabledIds?: Set<string>
-  maxH: string
+  maxH: ResponsiveString
   fadeColor?: string
 }
 

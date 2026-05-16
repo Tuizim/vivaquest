@@ -6,11 +6,11 @@ export function HabitsManagerHeader() {
   const activeCount = useAppStore((s) => s.habits.length)
 
   return (
-    <Flex w="full" flexDir="column" gap={3}>
-      <Text fontSize="sm" color="secondary.500">
+    <Flex w="full" flexDir="column" gap={{ base: 3, md: 4 }}>
+      <Text fontSize={{ base: "sm", md: "md" }} color="secondary.500">
         Ative os hábitos que deseja monitorar no seu dia a dia.
       </Text>
-      <Flex align="center" gap={2}>
+      <Flex align="center" gap={2} flexWrap="wrap">
         <Badge colorPalette="brand" variant="subtle" rounded="full" px={3} py={1} fontSize="xs">
           {activeCount} ativo{activeCount !== 1 ? "s" : ""}
         </Badge>

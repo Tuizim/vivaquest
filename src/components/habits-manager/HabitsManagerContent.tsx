@@ -1,6 +1,7 @@
 import { useAppStore } from "../../store/useAppStore"
 import { HabitSelectList } from "../habits/HabitSelectList"
 import type { Habit } from "../../types"
+import { scrollHeight } from "../../styles/tokens"
 
 const MIN_HABITS = 3
 
@@ -26,7 +27,7 @@ export function HabitsManagerContet() {
       selectedIds={activeIds}
       onToggle={handleToggle}
       disabledIds={disabledIds}
-      maxH="calc(100dvh - 230px)"
+      maxH={scrollHeight.full}
     />
   )
 }

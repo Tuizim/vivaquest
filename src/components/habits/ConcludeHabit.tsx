@@ -2,6 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/react"
 import type { Habit } from "../../types"
 import { Checkbutton } from "../button/Checkbutton"
 import { getHabitIconById } from "../../utils/habitUtilss"
+import { cardPadding } from "../../styles/tokens"
 
 type ConcludeHabitProp = {
   habit: Habit
@@ -19,21 +20,23 @@ export function ConcludeHabit({ habit, toggleHabit }: ConcludeHabitProp) {
   return (
     <Box
       bg={bgColor}
-      p={5}
+      p={cardPadding}
       rounded="2xl"
       border="1px solid"
       transition="all 0.2s ease"
       borderColor={borderColor}
+      minH="64px"
     >
-      <Flex align="center" justify="space-between" gap={3}>
+      <Flex align="center" justify="space-between" gap={3} h="full">
         <Flex align="center" gap={3} flex="1" minW={0}>
           <Box
-            p={3}
+            p={{ base: 2, md: 3 }}
             bg={iconBgColor}
             borderRadius="full"
             display="flex"
             alignItems="center"
             justifyContent="center"
+            flexShrink={0}
             boxShadow="xs"
             color={iconColor}
           >
@@ -41,7 +44,7 @@ export function ConcludeHabit({ habit, toggleHabit }: ConcludeHabitProp) {
           </Box>
 
           <Text
-            fontSize="lg"
+            fontSize={{ base: "md", md: "lg" }}
             fontWeight="bold"
             color={textColor}
             textDecoration={habit.concluded ? "line-through" : "none"}
@@ -52,7 +55,7 @@ export function ConcludeHabit({ habit, toggleHabit }: ConcludeHabitProp) {
           </Text>
         </Flex>
 
-        <Checkbutton stats={habit.concluded} onClick={() => toggleHabit(habit.id, !habit.concluded)}></Checkbutton>
+        <Checkbutton stats={habit.concluded} onClick={() => toggleHabit(habit.id, !habit.concluded)} />
       </Flex>
     </Box>
   )
