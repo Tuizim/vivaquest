@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware'
 import { persistConfig } from '../storage/persistConfig'
 import type { AppStore } from '../types/appStore'
 import { processHabitToggle } from '../usecases/processHabitToggle'
+import { processHabitsChange } from '../usecases/processHabitsChange'
 
 export const useAppStore = create<AppStore>()(
   persist(
@@ -19,7 +20,10 @@ export const useAppStore = create<AppStore>()(
       lastResetDate: null,
 
       setProfile: (profile) => set({ profile }),
-      setHabits: (habits) => set({ habits }),
+      setHabits: (habits) => {
+        const { habits: prevHabits, gamification } = get()
+        set(processHabitsChange(prevHabits, habits ?? [], gamification))
+      },
 
       toggleHabit: (habitId, status) => {
         const { habits, gamification } = get()
