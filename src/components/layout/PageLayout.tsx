@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react"
 import type { ReactNode } from "react"
-import { PageHeader } from "../navigation/PageHeader"
+import { PageHeader } from "./PageHeader"
 import { contentMaxW, containerPx, containerPb, sectionGap } from "../../styles/tokens"
 
 type Props = {
