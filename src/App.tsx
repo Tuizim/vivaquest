@@ -9,9 +9,11 @@ import HabitsManager from './pages/HabitsManager'
 import { Profile } from './pages/Profile'
 import { sidebar } from './styles/tokens'
 import { Sidebar } from './components/navigation/Sidebar'
+import { useAppStore } from './store/useAppStore'
 
 function App() {
   useDayReset()
+  const profile = useAppStore((state) => state.profile)
 
   return (
     <BrowserRouter>
@@ -20,7 +22,7 @@ function App() {
         minH="100vh"
         flexDir="column"
         align="center"
-        ml={sidebar.ml}
+        ml={profile ? sidebar.ml : 0}
         as="main"
       >
         <Routes>
