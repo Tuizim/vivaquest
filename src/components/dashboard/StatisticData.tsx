@@ -23,16 +23,16 @@ export function StatisticData({
       backdropFilter="blur(10px)"
       border="1px solid"
       borderColor={streakStyle?.borderColor ?? "whiteAlpha.200"}
-      p={4}
+      p={{ base: 3, md: 4 }}
       rounded="xl"
       boxShadow={streakStyle?.shadow}
       transition="all 0.2s ease"
     >
-      <Text fontSize="sm" color={streakStyle?.titleColor ?? "secondary.300"}>
+      <Text fontSize={{ base: "xs", md: "sm" }} color={streakStyle?.titleColor ?? "secondary.300"}>
         {title}
       </Text>
 
-      <Text fontWeight="bold" fontSize="lg" color={streakStyle?.valueColor}>
+      <Text fontWeight="bold" fontSize={{ base: "lg", md: "xl" }} color={streakStyle?.valueColor}>
         {streakStyle?.icon} {message}
       </Text>
     </Box>

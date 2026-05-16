@@ -12,7 +12,7 @@ export function DashboardStatistics() {
   const progress = getProgressInLevel(points)
 
   return (
-    <Box position="relative" width="100%" p={5} rounded="2xl" color="white" bg="secondary.900">
+    <Box position="relative" width="100%" p={5} rounded="2xl" color="white" bg="secondary.900" overflow="hidden">
       <LightEffect></LightEffect>
       <Text color="secondary.400" fontWeight="medium">
         Nível Atual
