@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { persistConfig } from '../storage/persistConfig'
+import { buildDayRecord } from '../domain/habits/habitHistory'
 import type { AppStore } from '../types/appStore'
 import { processHabitToggle } from '../usecases/processHabitToggle'
 import { processHabitsChange } from '../usecases/processHabitsChange'
@@ -31,10 +32,14 @@ export const useAppStore = create<AppStore>()(
       },
 
       resetDailyHabits: (today) => {
-        const { habits } = get()
+        const { habits, history, lastResetDate } = get()
+        const newHistory = lastResetDate
+          ? [...history, buildDayRecord(habits, new Date(lastResetDate))]
+          : history
         set({
           habits: habits.map((h) => ({ ...h, concluded: false })),
           lastResetDate: today,
+          history: newHistory,
         })
       },
     }),

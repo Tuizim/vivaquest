@@ -3,6 +3,7 @@ import { useProfileStats } from "../../hooks/useProfileStats";
 import { ProfileExperience } from "./ProfileExperience";
 import { ProfileStreak } from "./ProfileStreak";
 import { ProfileBestStats } from "./ProfileBestStats";
+import { ProfileHistory } from "./ProfileHistory";
 
 export function ProfileStatistics() {
   const {
@@ -27,6 +28,7 @@ export function ProfileStatistics() {
       />
       <ProfileStreak currentStreak={currentStreak} />
       <ProfileBestStats bestStreak={bestStreak} points={points} />
+      <ProfileHistory />
     </Stack>
   );
 }
