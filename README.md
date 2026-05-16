@@ -1,3 +1,46 @@
+# Vivaquest
+
+## Deploy
+
+O projeto possui CI/CD automatizado via GitHub Actions. A cada push na branch `main`, o workflow executa lint, build e aciona o redeploy no Easypanel via webhook.
+
+### Fluxo
+
+```
+git push origin main
+  → GitHub Actions: lint → build → webhook
+    → Easypanel: redeploy automático
+```
+
+### Secrets necessários no GitHub
+
+| Secret | Descrição |
+|---|---|
+| `EASYPANEL_WEBHOOK_URL` | URL do webhook gerado pelo Easypanel |
+
+### Como configurar
+
+**1. Pegar a Webhook URL no Easypanel**
+
+No painel do Easypanel, acesse:
+`Settings → <nome-do-app> → Deployments → Webhook URL`
+
+Copie a URL gerada (formato `https://<host>/api/webhooks/...`).
+
+**2. Cadastrar o secret no GitHub**
+
+No repositório, acesse:
+`Settings → Secrets and variables → Actions → New repository secret`
+
+- Name: `EASYPANEL_WEBHOOK_URL`
+- Value: a URL copiada no passo anterior
+
+**3. Fazer push**
+
+A partir do próximo push na `main`, o pipeline roda automaticamente. O status de cada etapa aparece na aba **Actions** do repositório.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
