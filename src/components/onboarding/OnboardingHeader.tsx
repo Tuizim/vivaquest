@@ -30,10 +30,20 @@ export function OnboardingHeader({ step, totalSteps }: OnboardingHeaderProps) {
         </Progress.Root>
       </Flex>
 
-      <Flex flexDir="column" align="center" gap={2} textAlign="center" pt={10} as="section">
+      <Flex
+        flexDir="column"
+        align="center"
+        gap={2}
+        textAlign="center"
+        pt={{ base: 8, md: 10 }}
+        as="section"
+        maxW={{ base: "full", md: "lg" }}
+        mx="auto"
+        w="full"
+      >
         <Box
-          w={20}
-          h={20}
+          w={{ base: 20, md: 24 }}
+          h={{ base: 20, md: 24 }}
           rounded="3xl"
           shadow="lg"
           display="flex"
@@ -45,11 +55,15 @@ export function OnboardingHeader({ step, totalSteps }: OnboardingHeaderProps) {
           <MdOutlineRocketLaunch size={48} color={brand500} />
         </Box>
 
-        <Heading size="2xl" fontWeight="bold">
+        <Heading
+          size={{ base: "2xl", md: "3xl" }}
+          fontWeight="bold"
+          lineHeight="1.2"
+        >
           Vamos começar sua jornada saudável
         </Heading>
 
-        <Text fontSize="sm" color="secondary.500">
+        <Text fontSize={{ base: "sm", md: "md" }} color="secondary.500">
           Personalize sua experiência para criar hábitos que realmente duram.
         </Text>
       </Flex>

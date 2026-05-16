@@ -1,6 +1,7 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react"
 import { HabitSelectList } from "../habits/HabitSelectList"
 import type { Habit } from "../../types"
+import { scrollHeight } from "../../styles/tokens"
 
 type Props = {
   selected: Habit[]
@@ -15,9 +16,9 @@ export default function StepHabit({ selected, onToggle, onFinish }: Props) {
   const selectedIds = new Set(selected.map((h) => h.id))
 
   return (
-    <Flex flexDir="column" gap={5}>
+    <Flex flexDir="column" gap={5} w="full">
       <Flex gap={3} justifyContent="space-between" alignItems="center" w="full">
-        <Heading fontSize="xl" fontWeight="bold">Hábitos iniciais</Heading>
+        <Heading fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold">Hábitos iniciais</Heading>
         <Text
           fontSize="xs"
           fontWeight="semibold"
@@ -30,7 +31,7 @@ export default function StepHabit({ selected, onToggle, onFinish }: Props) {
       <HabitSelectList
         selectedIds={selectedIds}
         onToggle={onToggle}
-        maxH="45vh"
+        maxH={scrollHeight.selection}
       />
 
       <Button colorPalette="brand" rounded="2xl" onClick={onFinish} disabled={!isReady}>
