@@ -1,4 +1,5 @@
-import { Box, Flex, Group, Text } from "@chakra-ui/react";
+import { Flex, Group, Text } from "@chakra-ui/react";
+import { InfoCard } from "../layout/InfoCard";
 
 type ProfileBestStatsProps = {
   bestStreak: number;
@@ -22,23 +23,16 @@ type StatBoxProps = {
 
 function StatBox({ icon, label, value }: StatBoxProps) {
   return (
-    <Box
-      p={4}
-      rounded="2xl"
-      bg="white"
-      border="1.5px solid"
-      borderColor="secondary.200"
-      boxShadow="0 2px 8px rgba(0,0,0,0.06)"
-    >
+    <InfoCard>
       <Flex align="center" gap={2} mb={1}>
-        <Text fontSize="xl">{icon}</Text>
+        <Text fontSize={{ base: "lg", md: "xl" }}>{icon}</Text>
       </Flex>
-      <Text fontSize="xs" color="secondary.400">
+      <Text fontSize={{ base: "xs", md: "sm" }} color="secondary.400">
         {label}
       </Text>
-      <Text fontWeight="bold" fontSize="lg" color="secondary.800" mt={1}>
+      <Text fontWeight="bold" fontSize={{ base: "lg", md: "xl" }} color="secondary.800" mt={1}>
         {value}
       </Text>
-    </Box>
+    </InfoCard>
   );
 }

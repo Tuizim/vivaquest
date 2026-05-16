@@ -1,4 +1,5 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
+import { InfoCard } from "../layout/InfoCard";
 
 type ProfileStreakProps = {
   currentStreak: number;
@@ -9,7 +10,6 @@ export function ProfileStreak({ currentStreak }: ProfileStreakProps) {
 
   const style = isActive
     ? {
-        bg: "white",
         borderColor: "rgba(255,120,60,0.4)",
         shadow: "0 2px 8px rgba(255,90,0,0.1)",
         icon: "🔥",
@@ -18,7 +18,6 @@ export function ProfileStreak({ currentStreak }: ProfileStreakProps) {
         valueColor: "orange.500",
       }
     : {
-        bg: "white",
         borderColor: "secondary.200",
         shadow: "0 2px 8px rgba(0,0,0,0.06)",
         icon: "❄️",
@@ -28,27 +27,19 @@ export function ProfileStreak({ currentStreak }: ProfileStreakProps) {
       };
 
   return (
-    <Box
-      w="full"
-      p={5}
-      rounded="2xl"
-      bg={style.bg}
-      border="1.5px solid"
-      borderColor={style.borderColor}
-      boxShadow={style.shadow}
-    >
-      <Text color="secondary.400" fontWeight="medium" fontSize="sm">
+    <InfoCard borderColor={style.borderColor} boxShadow={style.shadow}>
+      <Text color="secondary.400" fontWeight="medium" fontSize={{ base: "xs", md: "sm" }}>
         Streak atual
       </Text>
 
-      <Flex justify="space-between" align="center" mt={2}>
-        <Text fontWeight="bold" fontSize="2xl" color={style.valueColor}>
+      <Flex justify="space-between" align="center" mt={2} flexWrap="wrap" gap={1}>
+        <Text fontWeight="bold" fontSize={{ base: "2xl", lg: "3xl" }} color={style.valueColor}>
           {style.icon} {currentStreak} Dias
         </Text>
         <Text fontSize="sm" color={style.labelColor}>
           ({style.label})
         </Text>
       </Flex>
-    </Box>
+    </InfoCard>
   );
 }

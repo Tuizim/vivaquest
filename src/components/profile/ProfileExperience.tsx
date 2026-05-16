@@ -1,4 +1,5 @@
-import { Box, Flex, Progress, Text } from "@chakra-ui/react";
+import { Flex, Progress, Text } from "@chakra-ui/react";
+import { InfoCard } from "../layout/InfoCard";
 
 type ProfileExperienceProps = {
   progressInLevel: number;
@@ -16,21 +17,13 @@ export function ProfileExperience({
   nextLevel,
 }: ProfileExperienceProps) {
   return (
-    <Box
-      w="full"
-      p={5}
-      rounded="2xl"
-      bg="white"
-      border="1.5px solid"
-      borderColor="secondary.200"
-      boxShadow="0 2px 8px rgba(0,0,0,0.06)"
-    >
-      <Text color="secondary.400" fontWeight="medium" fontSize="sm">
+    <InfoCard>
+      <Text color="secondary.400" fontWeight="medium" fontSize={{ base: "xs", md: "sm" }}>
         Experiência
       </Text>
 
       <Flex justify="space-between" align="center" mt={1} mb={3}>
-        <Text fontWeight="bold" fontSize="lg" color="secondary.800">
+        <Text fontWeight="bold" fontSize={{ base: "lg", md: "xl" }} color="secondary.800">
           {progressInLevel} / {pointsGoal} XP
         </Text>
         <Text fontSize="sm" color="secondary.400">
@@ -50,9 +43,9 @@ export function ProfileExperience({
         </Progress.Track>
       </Progress.Root>
 
-      <Text fontSize="xs" color="secondary.400" mt={2}>
+      <Text fontSize={{ base: "xs", md: "sm" }} color="secondary.400" mt={2}>
         Faltam {pointsLeft} XP para o nível {nextLevel}
       </Text>
-    </Box>
+    </InfoCard>
   );
 }
