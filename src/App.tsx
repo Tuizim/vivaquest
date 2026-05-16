@@ -7,17 +7,20 @@ import ProtectedRoute from './security/ProtectedRoute'
 import { useDayReset } from './hooks/useDayReset'
 import HabitsManager from './pages/HabitsManager'
 import { Profile } from './pages/Profile'
+import { sidebar } from './styles/tokens'
+import { Sidebar } from './components/navigation/Sidebar'
 
 function App() {
   useDayReset()
 
   return (
     <BrowserRouter>
+      <Sidebar />
       <Flex
         minH="100vh"
         flexDir="column"
         align="center"
-        ml={{ base: "0", lg: "240px" }}
+        ml={sidebar.ml}
         as="main"
       >
         <Routes>
