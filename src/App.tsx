@@ -12,11 +12,12 @@ import { Sidebar } from './components/navigation/Sidebar'
 import { useAppStore } from './store/useAppStore'
 import { usePWA } from './hooks/usePWA'
 import { PWAUpdateBanner } from './components/layout/PWAUpdateBanner'
+import { PWAInstallBanner } from './components/layout/PWAInstallBanner'
 
 function App() {
   useDayReset()
   const profile = useAppStore((state) => state.profile)
-  const { needRefresh, applyUpdate, dismissUpdate } = usePWA()
+  const { needRefresh, applyUpdate, dismissUpdate, isInstallable, install, dismissInstall } = usePWA()
 
   return (
     <BrowserRouter>
@@ -42,6 +43,9 @@ function App() {
 
       {needRefresh && (
         <PWAUpdateBanner onUpdate={applyUpdate} onDismiss={dismissUpdate} />
+      )}
+      {isInstallable && !needRefresh && (
+        <PWAInstallBanner onInstall={install} onDismiss={dismissInstall} />
       )}
     </BrowserRouter>
   )
