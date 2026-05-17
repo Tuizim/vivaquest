@@ -6,47 +6,18 @@ on:
       - main
 
 jobs:
-  test:
-    name: Test
+  deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Test
-        run: npm run test --if-present
-        continue-on-error: true
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+          node-version: 22
 
       - name: Cache node_modules
         uses: actions/cache@v4
@@ -62,31 +33,25 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify dist output
+      - name: Verify dist
         run: |
           if [ ! -d "dist" ]; then
-            echo "::error::Build failed — pasta dist não foi gerada"
+            echo "::error::Build falhou — pasta dist não foi gerada"
             exit 1
           fi
           echo "dist gerada com sucesso:"
           ls -lh dist
 
-  deploy:
-    name: Deploy via Webhook
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Trigger Easypanel webhook
+      - name: Setup SSH
         run: |
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            -X POST "${{ secrets.EASYPANEL_WEBHOOK_URL }}")
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${{ secrets.SSH_PORT || 22 }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
-          echo "Webhook status HTTP: $HTTP_STATUS"
-
-          if [[ "$HTTP_STATUS" -lt 200 || "$HTTP_STATUS" -ge 300 ]]; then
-            echo "::error::Webhook falhou com status $HTTP_STATUS"
-            exit 1
-          fi
-
-          echo "Deploy disparado com sucesso (HTTP $HTTP_STATUS)"
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT || 22 }}" \
+            dist/ \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/vivaquest/"
