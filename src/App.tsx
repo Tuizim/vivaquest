@@ -10,10 +10,13 @@ import { Profile } from './pages/Profile'
 import { sidebar } from './styles/tokens'
 import { Sidebar } from './components/navigation/Sidebar'
 import { useAppStore } from './store/useAppStore'
+import { usePWA } from './hooks/usePWA'
+import { PWAUpdateBanner } from './components/layout/PWAUpdateBanner'
 
 function App() {
   useDayReset()
   const profile = useAppStore((state) => state.profile)
+  const { needRefresh, applyUpdate, dismissUpdate } = usePWA()
 
   return (
     <BrowserRouter>
@@ -36,6 +39,10 @@ function App() {
           </Route>
         </Routes>
       </Flex>
+
+      {needRefresh && (
+        <PWAUpdateBanner onUpdate={applyUpdate} onDismiss={dismissUpdate} />
+      )}
     </BrowserRouter>
   )
 }

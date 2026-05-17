@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4C6EF5" />
+    <title>Sem conexão – VivaQuest</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: 'Inter', system-ui, sans-serif;
+        background-color: #F8FAFC;
+        color: #1E293B;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      .card {
+        background: #ffffff;
+        border-radius: 1rem;
+        padding: 2.5rem 2rem;
+        max-width: 380px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 24px rgba(76, 110, 245, 0.08);
+      }
+
+      .icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1.5rem;
+        background: #E7F5FF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .icon svg {
+        width: 32px;
+        height: 32px;
+        stroke: #4C6EF5;
+      }
+
+      h1 {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: #1E293B;
+        margin-bottom: 0.75rem;
+      }
+
+      p {
+        font-size: 0.9375rem;
+        color: #64748B;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      button {
+        background: #4C6EF5;
+        color: #ffffff;
+        border: none;
+        border-radius: 0.625rem;
+        padding: 0.75rem 1.75rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.15s;
+      }
+
+      button:hover { background: #3a55c4; }
+      button:active { background: #2a3e93; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="1" y1="1" x2="23" y2="23"/>
+          <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+          <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+          <path d="M10.71 5.05A16 16 0 0 1 22.56 9"/>
+          <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+          <line x1="12" y1="20" x2="12.01" y2="20"/>
+        </svg>
+      </div>
+      <h1>Você está offline</h1>
+      <p>Não foi possível conectar à internet. Verifique sua conexão e tente novamente.</p>
+      <button onclick="window.location.reload()">Tentar novamente</button>
+    </div>
+  </body>
+</html>
